@@ -1,0 +1,3 @@
+class ManufacturingStatusesController < ApplicationController
+  
+end

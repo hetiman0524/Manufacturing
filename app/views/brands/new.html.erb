@@ -1,0 +1,15 @@
+<div class="contents">
+  <div class="container">
+    <%= form_with(model: @brand, local: true) do |form| %>
+      <h3>
+        銘柄新規登録
+      </h3>
+      <%= form.text_field :name, placeholder: "銘柄名" %>
+      <%= form.collection_select :cigarette_shred_id, CigaretteShred.all, :id, :name, placeholder: "刻み" %>
+      <%= form.collection_select :small_box_id, SmallBox.all, :id, :name, placeholder: "小箱" %>
+      <%= form.collection_select :paper_roll_id, PaperRoll.all, :id, :name, placeholder: "巻紙" %>
+      <%= form.collection_select :filter_id, Filter.all, :id, :name, placeholder: "フィルター" %>
+      <%= form.submit "SEND" %>
+    <% end %>
+  </div>
+</div>
