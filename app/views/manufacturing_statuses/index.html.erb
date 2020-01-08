@@ -1,6 +1,8 @@
 <div class = wrapper>
   <h1>製造中銘柄状況</h1>
-  <div class = brand>
+  <div class = production>
+    <%= link_to "銘柄材料一覧へ", brands_path %>
+    <div class = production__path></div>
     <h2 class = brand__name>セブンスター</h2>
     <div class = production__statu>
       <div class = production__statu__plan>計画製造数
@@ -18,6 +20,11 @@
           <td>刻み</td>
           <td>１P</td>
           <td>刻みを追加する</td>
+          <td>
+            <%= form_with(model: @brand, local: true) do |form| %>
+              <%= form.text_field :name, placeholder: "銘柄名" %>
+            <% end %>
+          </td>
           <td>判定</td>
           <td>足りてます</td>
         </tr>

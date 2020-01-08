@@ -1,11 +1,13 @@
 <div class = wrapper>
   <h1>材料一覧</h1>
   <div>検索</div>
-  <div>新規登録</div>
-  <div>製造一覧へ戻る</div>
+  <%= link_to "新規登録", new_brand_path %>
+    <div class = brand_new_link>
+  <%= link_to "製造状況ページへ", root_path %>
+    <div class = manufacturing_link></div>
   <div>検索</div>
-  <div class = material__contents>
-    <table class = material__table>
+  <div class = brand__contents>
+    <table class = brand__table>
       <tr>
         <td>銘柄名</td>
         <td>刻み</td>
@@ -13,13 +15,15 @@
         <td>小箱</td>
         <td>フィルター</td>
       </tr>
-      <tr>
-        <td>セブンスター</td>
-        <td>A11</td>
-        <td>B12</td>
-        <td>C11</td>
-        <td>D12</td>
-      </tr>
+      <% @brands.each do |brand| %>
+        <tr>
+          <td><%= brand.name%></td>
+          <td><%= CigaretteShred.find(brand.cigarette_shred_id).name %></td>
+          <td><%= PaperRoll.find(brand.cigarette_shred_id).name%></td>
+          <td><%= SmallBox.find(brand.cigarette_shred_id).name%></td>
+          <td><%= Filter.find(brand.cigarette_shred_id).name%></td>
+        </tr>
+      <% end %>
     </table>
   </div>
 </div>

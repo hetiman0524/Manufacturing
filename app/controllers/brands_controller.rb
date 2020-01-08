@@ -1,5 +1,6 @@
 class BrandsController < ApplicationController
   def index
+    @brands = Brand.all
   end
 
   def new
@@ -8,7 +9,7 @@ class BrandsController < ApplicationController
 
   def create
     Brand.create(brand_params)
-    redirect_to 
+    redirect_to brands_path
   end
 
   def brand_params
