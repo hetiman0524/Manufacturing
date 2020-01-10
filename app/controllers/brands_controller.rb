@@ -12,6 +12,10 @@ class BrandsController < ApplicationController
     redirect_to brands_path
   end
 
+  def search
+    @brands = Brand.search(params[:keyword])
+  end
+
   def brand_params
     params.require(:brand).permit(:name, :cigarette_shred_id, :small_box_id, :paper_roll_id, :filter_id)
   end
