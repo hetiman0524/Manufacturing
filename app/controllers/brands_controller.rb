@@ -14,6 +14,10 @@ class BrandsController < ApplicationController
 
   def search
     @brands = Brand.search(params[:keyword])
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   def brand_params
