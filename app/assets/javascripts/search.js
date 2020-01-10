@@ -1,12 +1,14 @@
-$(function() {
+$(document).on('turbolinks:load', function(){
   var search_list = $(".brand__content");
   
   function appendBrand(brand) {
-    var html = `<td>${brand.name}</td>
-                <td>${brand.cigarette_shred_name}</td>
-                <td>${brand.paper_roll_name}</td>
-                <td>${brand.small_box_name}</td>
-                <td>${brand.filter_name}</td>`
+    var html = `<tr class = brand__tr>
+                  <td>${brand.name}</td>
+                  <td>${brand.cigarette_shred_name}</td>
+                  <td>${brand.paper_roll_name}</td>
+                  <td>${brand.small_box_name}</td>
+                  <td>${brand.filter_name}</td>
+                </tr>`
     search_list.append(html);
     console.log(html)
   }
