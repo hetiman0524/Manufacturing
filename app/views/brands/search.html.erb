@@ -11,22 +11,26 @@
     <% end %>
   <div class = brand__contents>
     <table class = brand__table>
-      <tr>
-        <td>銘柄名</td>
-        <td>刻み</td>
-        <td>巻紙</td>
-        <td>小箱</td>
-        <td>フィルター</td>
-      </tr>
-      <% @brands.each do |brand| %>
-        <tr>
-          <td><%= brand.name%></td>
-          <td><%= CigaretteShred.find(brand.cigarette_shred_id).name %></td>
-          <td><%= PaperRoll.find(brand.cigarette_shred_id).name%></td>
-          <td><%= SmallBox.find(brand.cigarette_shred_id).name%></td>
-          <td><%= Filter.find(brand.cigarette_shred_id).name%></td>
+    　<thead>
+        <tr class = brand__item>
+          <td>銘柄名</td>
+          <td>刻み</td>
+          <td>巻紙</td>
+          <td>小箱</td>
+          <td>フィルター</td>
         </tr>
-      <% end %>
+　　　 </thead>
+      <tbody class = brand__content>
+        <% @brands.each do |brand| %>
+          <tr class = brand__tr >
+            <td><%= brand.name%></td>
+            <td><%= CigaretteShred.find(brand.cigarette_shred_id).name %></td>
+            <td><%= PaperRoll.find(brand.paper_roll_id).name%></td>
+            <td><%= SmallBox.find(brand.small_box_id).name%></td>
+            <td><%= Filter.find(brand.filter_id).name%></td>
+          </tr>
+        <% end %>
+      </tbody>
     </table>
   </div>
 </div>

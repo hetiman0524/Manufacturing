@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root to: "manufacturing_statuses#index"
+  resources :manufacturing_statuses, only: [:index, :new, :create] 
   resources :brands, only: [:index, :new, :create] do
     collection do
       get 'search'
