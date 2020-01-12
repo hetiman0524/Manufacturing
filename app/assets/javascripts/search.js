@@ -10,7 +10,6 @@ $(document).on('turbolinks:load', function(){
                   <td>${brand.filter_name}</td>
                 </tr>`
     search_list.append(html);
-    console.log(html)
   }
   
   function appendErrMsgToHTML(msg) {
