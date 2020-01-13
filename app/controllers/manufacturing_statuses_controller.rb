@@ -1,11 +1,15 @@
 class ManufacturingStatusesController < ApplicationController
+  def new
+    @ManufacturingStatus = ManufacturingStatuses.new
+  end
+
   def create
-    @number = ManufacturingStatuses.new
-    @number = ManufacturingStatuses.create(number_params)
+    @ManufacturingStatus = ManufacturingStatuses.create(manufacturingstatus_params)
   end
 
   private
-  def number_params
+  def manufacturingstatus_params
+    
     
   end
 end
