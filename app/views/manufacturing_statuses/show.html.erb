@@ -1,0 +1,109 @@
+<div class = wrapper>
+  <h1>製造中銘柄状況</h1>
+  <div class = production>
+    <%= link_to "銘柄材料一覧へ", brands_path %>
+      <div class = production__path></div>
+    <%= link_to "製造計画追加", new_manufacturing_status_path %>
+      <div class = production__path></div>
+    <div class = production__statu>
+      <%= form_tag({controller: :manufacturing_statuses, action: :show, id: :[]}, {method: :get}) do %>
+      <select name="manufacturingstatus">
+        <%= @manufacturingstatuses.each do |n| %>
+				  <option value=<%= n.id %>><%= n.brand.name %></option>
+			  <% end %>
+      </select>
+      <input type="submit" value="銘柄を選択する">
+    <% end %>
+    <h2 class = brand__name><%= @manufacturingstatus.brand.name %></h2>
+    <div class = production__statu>
+      <div class = production__statu__plan>計画製造数
+        <div class = production__statu__plan-number><%= @manufacturingstatus.production_plan %>c/s</div>
+      </div>
+      <div class = production__statu__remaining-number>残製造数量
+        <div class = production__statu__remaining><%= @manufacturingstatus.production_remaining %>c/s</div>
+      </div>
+    </div>
+  </div>
+  <div class = material__contents>
+    <div class = material__title>供給材料状況
+      <table class = material__title__table>
+        <tr>
+          <td>刻み</td>
+          <td><%= @manufacturingstatus.cigarette_shred_number %>kg</td>
+          <td>刻みを追加する</td>
+          <td>
+            <%= form_with(model: @number, local: true) do |form| %>
+              <%= form.number_field :puroduction_remaining, placeholder: "供給数の追加" %>
+            <% end %>
+          </td>
+          <td>kg</td>
+          <td>判定</td>
+          <td>
+            <% if @csn*5 >= @remaining %>
+              足りてます。
+            <% else %>
+              足りません。
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="5">＊刻みは1kgにつき、5c/s作れます。</td>
+        </tr>
+        <tr></tr>
+        <tr></tr>
+        <tr>
+          <td>巻紙</td>
+          <td><%= @manufacturingstatus.small_box_number %>P</td>
+          <td>巻紙を追加する</td>
+          <td>判定</td>
+          <td>
+            <% if @sbn*5 >= @remaining %>
+              足りてます。
+            <% else %>
+              足りません。
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="5">＊巻紙は1巻につき、10c/s作れます。</td>
+        </tr>
+        <tr></tr>
+        <tr></tr>
+        <tr>
+          <td>小箱</td>
+          <td><%= @manufacturingstatus.paper_roll_number %>P</td>
+          <td>小箱を追加する</td>
+          <td>判定</td>
+          <td>
+            <% if @prn*5 >= @remaining %>
+              足りてます。
+            <% else %>
+              足りません。
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="5">＊小箱は1束につき、1c/s作れます。</td>
+        </tr>
+        <tr></tr>
+        <tr></tr>
+        <tr>
+          <td>フィルター</td>
+          <td><%= @manufacturingstatus.filter_number %>P</td>
+          <td>フィルターを追加する</td>
+          <td>判定</td>
+          <td>
+            <% if @fn*5 >= @remaining %>
+              足りてます。
+            <% else %>
+              足りません。
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="5">＊フィルターは1箱につき、5c/s作れます。</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

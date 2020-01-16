@@ -1,4 +1,8 @@
 class ManufacturingStatusesController < ApplicationController
+  def index
+    @manufacturingstatuses = ManufacturingStatus.all
+  end
+
   def new
     @manufacturingstatus = ManufacturingStatus.new
   end
@@ -6,6 +10,16 @@ class ManufacturingStatusesController < ApplicationController
   def create
     @manufacturingstatus = ManufacturingStatus.create(manufacturingstatus_params)
     redirect_to root_path
+  end
+
+  def show
+    @manufacturingstatuses = ManufacturingStatus.all
+    @manufacturingstatus = ManufacturingStatus.find(params[:manufacturingstatus])
+    @remaining = @manufacturingstatus.production_remaining.to_i
+    @csn = @manufacturingstatus.cigarette_shred_number.to_i
+    @sbn = @manufacturingstatus.small_box_number.to_i
+    @prn = @manufacturingstatus.paper_roll_number.to_i
+    @fn = @manufacturingstatus.filter_number.to_i
   end
 
   private
