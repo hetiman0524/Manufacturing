@@ -19,7 +19,7 @@
       <div class = production__statu__plan>計画製造数
         <div class = production__statu__plan-number><%= @manufacturingstatus.production_plan %>c/s</div>
       </div>
-      <div class = production__statu__remaining-number>残製造数量
+      <div class = production__statu__remaining-number>製造数量
         <div class = production__statu__remaining><%= @manufacturingstatus.production_remaining %>c/s</div>
       </div>
     </div>
@@ -57,7 +57,7 @@
           <td>巻紙を追加する</td>
           <td>判定</td>
           <td>
-            <% if @sbn*5 >= @remaining %>
+            <% if @prn*10 >= @remaining %>
               足りてます。
             <% else %>
               足りません。
@@ -75,7 +75,7 @@
           <td>小箱を追加する</td>
           <td>判定</td>
           <td>
-            <% if @prn*5 >= @remaining %>
+            <% if @sbn >= @remaining %>
               足りてます。
             <% else %>
               足りません。

@@ -20,6 +20,8 @@ class ManufacturingStatusesController < ApplicationController
     @sbn = @manufacturingstatus.small_box_number.to_i
     @prn = @manufacturingstatus.paper_roll_number.to_i
     @fn = @manufacturingstatus.filter_number.to_i
+
+    
   end
 
   private
