@@ -26,85 +26,100 @@
   </div>
   <div class = material__contents>
     <div class = material__title>供給材料状況
-      <table class = material__title__table>
-        <tr>
-          <td>刻み</td>
-          <td><%= @manufacturingstatus.cigarette_shred_number %>kg</td>
-          <td>刻みを追加する</td>
-          <td>
-            <%= form_with(model: @manufacturingstatus, url: manufacturing_status_path(@manufacturingstatus.id), method: :patch, local: true) do |form| %>
-              <%= form.number_field :cigarette_shred_number, placeholder: "供給数の追加" %>
+      <%= form_with(model: @manufacturingstatus, url: manufacturing_status_path(@manufacturingstatus.id), method: :patch, local: true) do |form| %>
+        <table class = material__title__table>
+          <tr>
+            <td>刻み</td>
+            <td><%= @manufacturingstatus.cigarette_shred_number %>kg</td>
+            <td>刻みを追加する</td>
+            <td>
+              <%= form.number_field :cigarette_shred_number, value: "", placeholder: "供給数の追加" %>
               <%= form.submit "追加する"%>
-            <% end %>
-          </td>
-          <td>kg</td>
-          <td>判定</td>
-          <td>
-            <% if @csn*5 >= @remaining %>
-              足りてます。
-            <% else %>
-              足りません。
-            <% end %>
-          </td>
-        </tr>
-        <tr>
-          <td colspan="5">＊刻みは1kgにつき、5c/s作れます。</td>
-        </tr>
-        <tr></tr>
-        <tr></tr>
-        <tr>
-          <td>巻紙</td>
-          <td><%= @manufacturingstatus.small_box_number %>P</td>
-          <td>巻紙を追加する</td>
-          <td>判定</td>
-          <td>
-            <% if @prn*10 >= @remaining %>
-              足りてます。
-            <% else %>
-              足りません。
-            <% end %>
-          </td>
-        </tr>
-        <tr>
-          <td colspan="5">＊巻紙は1巻につき、10c/s作れます。</td>
-        </tr>
-        <tr></tr>
-        <tr></tr>
-        <tr>
-          <td>小箱</td>
-          <td><%= @manufacturingstatus.paper_roll_number %>P</td>
-          <td>小箱を追加する</td>
-          <td>判定</td>
-          <td>
-            <% if @sbn >= @remaining %>
-              足りてます。
-            <% else %>
-              足りません。
-            <% end %>
-          </td>
-        </tr>
-        <tr>
-          <td colspan="5">＊小箱は1束につき、1c/s作れます。</td>
-        </tr>
-        <tr></tr>
-        <tr></tr>
-        <tr>
-          <td>フィルター</td>
-          <td><%= @manufacturingstatus.filter_number %>P</td>
-          <td>フィルターを追加する</td>
-          <td>判定</td>
-          <td>
-            <% if @fn*5 >= @remaining %>
-              足りてます。
-            <% else %>
-              足りません。
-            <% end %>
-          </td>
-        </tr>
-        <tr>
-          <td colspan="5">＊フィルターは1箱につき、5c/s作れます。</td>
-        </tr>
-      </table>
+            </td>
+            <td>kg</td>
+            <td>判定</td>
+            <td>
+              <% if @csn*5 >= @remaining %>
+                足りてます。
+              <% else %>
+                足りません。
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="5">＊刻みは1kgにつき、5c/s作れます。</td>
+          </tr>
+          <tr></tr>
+          <tr></tr>
+          <tr>
+            <td>巻紙</td>
+            <td><%= @manufacturingstatus.small_box_number %>P</td>
+            <td>巻紙を追加する</td>
+            <td>
+              <%= form.number_field :small_box_number, value: "", placeholder: "供給数の追加" %>
+              <%= form.submit "追加する"%>
+            </td>
+            <td>kg</td>
+            <td>判定</td>
+            <td>
+              <% if @prn*10 >= @remaining %>
+                足りてます。
+              <% else %>
+                足りません。
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="5">＊巻紙は1巻につき、10c/s作れます。</td>
+          </tr>
+          <tr></tr>
+          <tr></tr>
+          <tr>
+            <td>小箱</td>
+            <td><%= @manufacturingstatus.paper_roll_number %>P</td>
+            <td>小箱を追加する</td>
+            <td>
+              <%= form.number_field :paper_roll_number, value: "", placeholder: "供給数の追加" %>
+              <%= form.submit "追加する"%>
+            </td>
+            <td>kg</td>
+            <td>判定</td>
+            <td>
+              <% if @sbn >= @remaining %>
+                足りてます。
+              <% else %>
+                足りません。
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="5">＊小箱は1束につき、1c/s作れます。</td>
+          </tr>
+          <tr></tr>
+          <tr></tr>
+          <tr>
+            <td>フィルター</td>
+            <td><%= @manufacturingstatus.filter_number %>P</td>
+            <td>フィルターを追加する</td>
+            <td>
+              <%= form.number_field :filter_number, value: "", placeholder: "供給数の追加" %>
+              <%= form.submit "追加する"%>
+            </td>
+            <td>kg</td>
+            <td>判定</td>
+            <td>
+              <% if @fn*5 >= @remaining %>
+                足りてます。
+              <% else %>
+                足りません。
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="5">＊フィルターは1箱につき、5c/s作れます。</td>
+          </tr>
+        </table>
+      <% end %>
     </div>
   </div>
 </div>

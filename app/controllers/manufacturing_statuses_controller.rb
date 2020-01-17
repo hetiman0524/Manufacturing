@@ -22,11 +22,21 @@ class ManufacturingStatusesController < ApplicationController
     @prn = @manufacturingstatus.paper_roll_number.to_i
     @fn = @manufacturingstatus.filter_number.to_i
   end
-
+  
   def update
     @manufacturingstatus = ManufacturingStatus.find(params[:id])
     csn =  @manufacturingstatus.cigarette_shred_number.to_i + params[:manufacturing_status][:cigarette_shred_number].to_i
     @manufacturingstatus.cigarette_shred_number = csn
+
+    prn =  @manufacturingstatus.paper_roll_number.to_i + params[:manufacturing_status][:paper_roll_number].to_i
+    @manufacturingstatus.paper_roll_number = prn
+    
+    sbn =  @manufacturingstatus.small_box_number.to_i + params[:manufacturing_status][:small_box_number].to_i
+    @manufacturingstatus.small_box_number = sbn
+
+    fn =  @manufacturingstatus.filter_number.to_i + params[:manufacturing_status][:filter_number].to_i
+    @manufacturingstatus.filter_number = fn
+
     @manufacturingstatus.save
     redirect_back(fallback_location: root_path)
   end
