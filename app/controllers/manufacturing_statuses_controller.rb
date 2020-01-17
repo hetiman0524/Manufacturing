@@ -25,6 +25,10 @@ class ManufacturingStatusesController < ApplicationController
   
   def update
     @manufacturingstatus = ManufacturingStatus.find(params[:id])
+    
+    production_remaining =  @manufacturingstatus.production_remaining.to_i + params[:manufacturing_status][:production_remaining].to_i
+    @manufacturingstatus.production_remaining = production_remaining
+
     csn =  @manufacturingstatus.cigarette_shred_number.to_i + params[:manufacturing_status][:cigarette_shred_number].to_i
     @manufacturingstatus.cigarette_shred_number = csn
 

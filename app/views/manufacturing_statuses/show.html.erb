@@ -21,6 +21,10 @@
       </div>
       <div class = production__statu__remaining-number>製造数量
         <div class = production__statu__remaining><%= @manufacturingstatus.production_remaining %>c/s</div>
+        <%= form_with(model: @manufacturingstatus, url: manufacturing_status_path(@manufacturingstatus.id), method: :patch, local: true) do |form| %>
+          <%= form.number_field :production_remaining, value: "", placeholder: "製造数の追加" %>
+          <%= form.submit "追加する"%>
+        <% end %>
       </div>
     </div>
   </div>
