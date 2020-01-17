@@ -16,12 +16,19 @@ class ManufacturingStatusesController < ApplicationController
     @manufacturingstatuses = ManufacturingStatus.all
     @manufacturingstatus = ManufacturingStatus.find(params[:manufacturingstatus])
     @remaining = @manufacturingstatus.production_remaining.to_i
+    
     @csn = @manufacturingstatus.cigarette_shred_number.to_i
     @sbn = @manufacturingstatus.small_box_number.to_i
     @prn = @manufacturingstatus.paper_roll_number.to_i
     @fn = @manufacturingstatus.filter_number.to_i
+  end
 
-    
+  def update
+    @manufacturingstatus = ManufacturingStatus.find(params[:id])
+    csn =  @manufacturingstatus.cigarette_shred_number.to_i + params[:manufacturing_status][:cigarette_shred_number].to_i
+    @manufacturingstatus.cigarette_shred_number = csn
+    @manufacturingstatus.save
+    redirect_back(fallback_location: root_path)
   end
 
   private

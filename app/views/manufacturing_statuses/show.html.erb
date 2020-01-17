@@ -32,8 +32,9 @@
           <td><%= @manufacturingstatus.cigarette_shred_number %>kg</td>
           <td>刻みを追加する</td>
           <td>
-            <%= form_with(model: @number, local: true) do |form| %>
-              <%= form.number_field :puroduction_remaining, placeholder: "供給数の追加" %>
+            <%= form_with(model: @manufacturingstatus, url: manufacturing_status_path(@manufacturingstatus.id), method: :patch, local: true) do |form| %>
+              <%= form.number_field :cigarette_shred_number, placeholder: "供給数の追加" %>
+              <%= form.submit "追加する"%>
             <% end %>
           </td>
           <td>kg</td>

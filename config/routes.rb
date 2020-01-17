@@ -1,10 +1,6 @@
 Rails.application.routes.draw do
   root to: "manufacturing_statuses#index"
-  resources :manufacturing_statuses, only: [:index, :new, :create, :show] do
-    collection do
-      get 'number_new'
-      post  'number_create'
-    end
+  resources :manufacturing_statuses, only: [:index, :new, :create, :show, :update] do
   end
   resources :brands, only: [:index, :new, :create] do
     collection do
