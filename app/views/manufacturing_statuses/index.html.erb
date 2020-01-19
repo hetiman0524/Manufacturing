@@ -5,54 +5,13 @@
       <div class = production__path></div>
     <%= link_to "製造計画追加", new_manufacturing_status_path %>
       <div class = production__path></div>
-    <h2 class = brand__name>セブンスター</h2>
-    <div class = production__statu>
-      <div class = production__statu__plan>計画製造数
-        <div class = production__statu__plan-number>2000</div>
-      </div>
-      <div class = production__statu__remaining-number>残製造数量
-        <div class = production__statu__remaining>1000</div>
-      </div>
-    </div>
-  </div>
-  <div class = material__contents>
-    <div class = material__title>供給材料状況
-      <table class = material__title__table>
-        <tr>
-          <td>刻み</td>
-          <td>１P</td>
-          <td>刻みを追加する</td>
-          <td>
-            <%= form_with(model: @number, local: true) do |form| %>
-              <%= form.number_field :puroduction_remaining, placeholder: "供給数の追加" %>
-            <% end %>
-          </td>
-          <td>kg</td>
-          <td>判定</td>
-          <td>足りてます</td>
-        </tr>
-        <tr>
-          <td>巻紙</td>
-          <td>１P</td>
-          <td>巻紙を追加する</td>
-          <td>判定</td>
-          <td>足りません</td>
-        </tr>
-        <tr>
-          <td>小箱</td>
-          <td>１P</td>
-          <td>小箱を追加する</td>
-          <td>判定</td>
-          <td>足りてます</td>
-        </tr>
-         <tr>
-          <td>フィルター</td>
-          <td>１P</td>
-          <td>フィルターを追加する</td>
-          <td>判定</td>
-          <td>足りてます</td>
-        </tr>
-      </table>
-    </div>
+   <%= form_tag({controller: :manufacturing_statuses, action: :show, id: :[]}, {method: :get}) do %>
+      <select name="manufacturingstatus">
+        <%= @manufacturingstatuses.each do |n| %>
+				  <option value=<%= n.id %>><%= n.brand.name %></option>
+			  <% end %>
+      </select>
+      <input type="submit" value="銘柄を選択する">
+    <% end %>
   </div>
 </div>

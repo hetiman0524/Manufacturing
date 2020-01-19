@@ -1,24 +1,68 @@
-# README
+## データベース
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## brandテーブル
+|column|Type|Option|
+|------|----|------|
+|name|string|null: false|
+|cigarette_shred_id|integer|null: false|
+|small_box_id|integer|null: false|
+|paper_roll_id|integer|null: false|
+|filter_id|integer|null: false|
 
-Things you may want to cover:
+### Association
+- belongs_to :cigarette_shred
+- belongs_to :small_box
+- belongs_to :paper_roll
+- belongs_to :filter
+- has_many :manufacturing_statuses
 
-* Ruby version
 
-* System dependencies
+## manufacturing_status
+|column|Type|Option|
+|------|----|------|
+|brand_id|integer|null: false|
+|production_plan|integer|null: false|
+|production_remaining|integer|null:false|
+|cigarette_shred_number|integer|null: false|
+|small_box_number|integer|null: false|
+|paper_roll_number|integer|null: false|
+|filter_number|integer|null: false|
 
-* Configuration
+### Association
+belongs_to :brand
 
-* Database creation
 
-* Database initialization
+## cigarette_shred
+|column|Type|Option|
+|------|----|------|
+|name|string|null: false|
 
-* How to run the test suite
+### Association
+- has_many :brands
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+## small_box
+|column|Type|Option|
+|------|----|------|
+|name|string|null: false|
 
-* ...
+### Association
+- has_many :brands
+
+
+## paper_roll
+|column|Type|Option|
+|------|----|------|
+|name|string|null: false|
+
+### Association
+- has_many :brands
+
+
+## filter
+|column|Type|Option|
+|------|----|------|
+|name|string|null: false|
+
+### Association
+- has_many :brands
