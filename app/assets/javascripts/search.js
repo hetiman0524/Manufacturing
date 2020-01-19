@@ -2,7 +2,7 @@ $(document).on('turbolinks:load', function(){
   var search_list = $(".brand__content");
   
   function appendBrand(brand) {
-    var html = `<tr class = brand__tr>
+    var html = `<tr class = brand_list>
                   <td>${brand.name}</td>
                   <td>${brand.cigarette_shred_name}</td>
                   <td>${brand.paper_roll_name}</td>
