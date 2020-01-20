@@ -49,7 +49,7 @@ test:
 #
 production:
   adapter: postgresql
-  encoding: unicode
+  encoding: UTF8
   pool: 5
   database: Manufacturing_production
   username: Manufacturing
