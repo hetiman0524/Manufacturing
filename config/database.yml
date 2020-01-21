@@ -49,9 +49,5 @@ test:
 #
 production:
   url: <%= ENV['DATABASE_URL'] %>
-  adapter: mysql2
   encoding: utf8
   pool: 5
-  database: Manufacturing_production
-  username: Manufacturing
-  password: <%= ENV['MANUFACTURING_DATABASE_PASSWORD'] %>
