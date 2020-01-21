@@ -1,10 +1,10 @@
-<div class = wrapper>
+<div class="wrapper">
   <h1>製造中銘柄状況</h1>
-  <div class = production>
+  <div class="production">
     <%= link_to "銘柄材料一覧へ", brands_path %>
-      <div class = production__path></div>
+      <div class="production__path"></div>
     <%= link_to "製造計画追加", new_manufacturing_status_path %>
-      <div class = production__path></div>
+      <div class="production__path"></div>
    <%= form_tag({controller: :manufacturing_statuses, action: :show, id: :[]}, {method: :get}) do %>
       <select name="manufacturingstatus">
         <%= @manufacturingstatuses.each do |n| %>
