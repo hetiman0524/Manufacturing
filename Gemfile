@@ -61,6 +61,7 @@ end
 
 group :production do
   gem 'mysql2', '>= 0.4.4', '< 0.6.0'
+  gem 'pg'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
