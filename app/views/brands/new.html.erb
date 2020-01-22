@@ -9,7 +9,9 @@
       <%= form.collection_select :small_box_id, SmallBox.all, :id, :name, placeholder: "小箱" %>
       <%= form.collection_select :paper_roll_id, PaperRoll.all, :id, :name, placeholder: "巻紙" %>
       <%= form.collection_select :filter_id, Filter.all, :id, :name, placeholder: "フィルター" %>
-      <%= form.submit "SEND" %>
+      <%= form.submit "登録する" %>
     <% end %>
   </div>
+  <%= link_to "戻る", root_path %>
+      <div class="production__path"></div>
 </div>

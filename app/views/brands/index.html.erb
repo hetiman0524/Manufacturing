@@ -4,11 +4,12 @@
     <div class = brand_new_link>
   <%= link_to "製造状況ページへ", root_path %>
     <div class = manufacturing_link></div>
-  <div>検索</div>
+  <p>銘柄検索
     <%= form_with(url: search_brands_path, local: true, method: :get, class: "search-form") do |form| %>
       <%= form.text_field :keyword, placeholder: "銘柄を検索する", class: "search-input" %>
       <%= form.submit "検索", class: "search-btn" %>
     <% end %>
+  </p>
   <div class = brand__contents>
     <table class = brand__table>
       <thead>
