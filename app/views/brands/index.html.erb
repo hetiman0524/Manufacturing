@@ -1,17 +1,18 @@
 <div class = wrapper>
-  <h1>材料一覧</h1>
+  <h1>銘柄別使用材料一覧</h1>
   <%= link_to "新規登録", new_brand_path %>
     <div class = brand_new_link>
   <%= link_to "製造状況ページへ", root_path %>
     <div class = manufacturing_link></div>
-  <div>検索</div>
+  <p>銘柄検索
     <%= form_with(url: search_brands_path, local: true, method: :get, class: "search-form") do |form| %>
       <%= form.text_field :keyword, placeholder: "銘柄を検索する", class: "search-input" %>
       <%= form.submit "検索", class: "search-btn" %>
     <% end %>
+  </p>
   <div class = brand__contents>
     <table class = brand__table>
-    　<thead>
+      <thead>
         <tr class = brand__item>
           <td>銘柄名</td>
           <td>刻み</td>
@@ -19,7 +20,7 @@
           <td>小箱</td>
           <td>フィルター</td>
         </tr>
-　　　 </thead>
+      </thead>
       <tbody class = brand__content>
         <% @brands.each do |brand| %>
           <tr class = brand__tr>

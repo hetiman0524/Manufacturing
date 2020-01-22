@@ -1,12 +1,14 @@
 <div class = wrapper>
   <h1>製造中銘柄状況</h1>
   <div class = production>
-    <%= link_to "銘柄材料一覧へ", brands_path %>
+    <%= link_to "銘柄別使用材料一覧へ", brands_path %>
       <div class = production__path></div>
+    <%= link_to "材料を確認、登録する", materials_path %>
+      <div class="production__path"></div>
     <%= link_to "製造計画追加", new_manufacturing_status_path %>
       <div class = production__path></div>
-    <div class = production__statu>
-      <%= form_tag({controller: :manufacturing_statuses, action: :show, id: :[]}, {method: :get}) do %>
+    <h3>製造管理状況を見たい銘柄を選択して下さい</h3>
+    <%= form_tag({controller: :manufacturing_statuses, action: :show, id: :[]}, {method: :get}) do %>
       <select name="manufacturingstatus">
         <%= @manufacturingstatuses.each do |n| %>
 				  <option value=<%= n.id %>><%= n.brand.name %></option>
@@ -14,7 +16,10 @@
       </select>
       <input type="submit" value="銘柄を選択する">
     <% end %>
-    <h2 class = brand__name><%= @manufacturingstatus.brand.name %></h2>
+    <div class = production__brand_name>
+      <p>銘柄名</p>
+      <h3 class = brand__name><%= @manufacturingstatus.brand.name %></h3>
+    </div>
     <div class = production__statu>
       <div class = production__statu__plan>計画製造数
         <div class = production__statu__plan-number><%= @manufacturingstatus.production_plan %>c/s</div>
@@ -29,98 +34,95 @@
     </div>
   </div>
   <div class = material__contents>
-    <div class = material__title>供給材料状況
+    <div class = material__title>
+      <h3>供給材料状況</h3>
       <%= form_with(model: @manufacturingstatus, url: manufacturing_status_path(@manufacturingstatus.id), method: :patch, local: true) do |form| %>
         <table class = material__title__table>
           <tr>
+            <th>材料名</th>
+            <th>供給量</th>
+            <th>供給したい数</th>
+          <tr>
             <td>刻み</td>
             <td><%= @manufacturingstatus.cigarette_shred_number %>kg</td>
-            <td>刻みを追加する</td>
             <td>
-              <%= form.number_field :cigarette_shred_number, value: "", placeholder: "供給数の追加" %>
-              <%= form.submit "追加する"%>
+              <%= form.number_field :cigarette_shred_number, value: "", placeholder: "供給数の追加" %>kg
+              <%= form.submit "刻みを追加する"%>
             </td>
-            <td>kg</td>
             <td>判定</td>
             <td>
               <% if @csn*5 >= @remaining %>
-                足りてます。
+                <p class = "Judgment_true">足りてます。</p>
               <% else %>
-                足りません。
+                <p class = "Judgment_false">足りません。</p>
               <% end %>
             </td>
           </tr>
           <tr>
-            <td colspan="5">＊刻みは1kgにつき、5c/s作れます。</td>
+            <td colspan="5">＊製造数量に対して、刻みは1kgにつき、5c/s作れます。</td>
           </tr>
           <tr></tr>
           <tr></tr>
           <tr>
             <td>巻紙</td>
-            <td><%= @manufacturingstatus.small_box_number %>P</td>
-            <td>巻紙を追加する</td>
+            <td><%= @manufacturingstatus.paper_roll_number %>巻</td>
             <td>
-              <%= form.number_field :small_box_number, value: "", placeholder: "供給数の追加" %>
-              <%= form.submit "追加する"%>
+              <%= form.number_field :paper_roll_number, value: "", placeholder: "供給数の追加" %>巻
+              <%= form.submit "巻紙を追加する"%>
             </td>
-            <td>kg</td>
             <td>判定</td>
             <td>
               <% if @prn*10 >= @remaining %>
-                足りてます。
+                <p class = "Judgment_true">足りてます。</p>
               <% else %>
-                足りません。
+                <p class = "Judgment_false">足りません。</p>
               <% end %>
             </td>
           </tr>
           <tr>
-            <td colspan="5">＊巻紙は1巻につき、10c/s作れます。</td>
+            <td colspan="5">＊製造数量に対して、巻紙は1巻につき、10c/s作れます。</td>
           </tr>
           <tr></tr>
           <tr></tr>
           <tr>
             <td>小箱</td>
-            <td><%= @manufacturingstatus.paper_roll_number %>P</td>
-            <td>小箱を追加する</td>
+            <td><%= @manufacturingstatus.small_box_number %>束</td>
             <td>
-              <%= form.number_field :paper_roll_number, value: "", placeholder: "供給数の追加" %>
-              <%= form.submit "追加する"%>
+              <%= form.number_field :small_box_number, value: "", placeholder: "供給数の追加" %>束
+              <%= form.submit "小箱を追加する"%>
             </td>
-            <td>kg</td>
             <td>判定</td>
             <td>
               <% if @sbn >= @remaining %>
-                足りてます。
+                <p class = "Judgment_true">足りてます。</p>
               <% else %>
-                足りません。
+                <p class = "Judgment_false">足りません。</p>
               <% end %>
             </td>
           </tr>
           <tr>
-            <td colspan="5">＊小箱は1束につき、1c/s作れます。</td>
+            <td colspan="5">＊製造数量に対して、小箱は1束につき、1c/s作れます。</td>
           </tr>
           <tr></tr>
           <tr></tr>
           <tr>
             <td>フィルター</td>
-            <td><%= @manufacturingstatus.filter_number %>P</td>
-            <td>フィルターを追加する</td>
+            <td><%= @manufacturingstatus.filter_number %>束</td>
             <td>
-              <%= form.number_field :filter_number, value: "", placeholder: "供給数の追加" %>
-              <%= form.submit "追加する"%>
+              <%= form.number_field :filter_number, value: "", placeholder: "供給数の追加" %>束
+              <%= form.submit "フィルターを追加する"%>
             </td>
-            <td>kg</td>
             <td>判定</td>
             <td>
               <% if @fn*5 >= @remaining %>
-                足りてます。
+                <p class = "Judgment_true">足りてます。</p>
               <% else %>
-                足りません。
+                <p class = "Judgment_false">足りません。</p>
               <% end %>
             </td>
           </tr>
           <tr>
-            <td colspan="5">＊フィルターは1箱につき、5c/s作れます。</td>
+            <td colspan="5">＊製造数量に対して、フィルターは1箱につき、5c/s作れます。</td>
           </tr>
         </table>
       <% end %>

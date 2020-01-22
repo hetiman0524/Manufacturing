@@ -1,0 +1,33 @@
+<div class = wrapper>
+  <h1>小箱</h1>
+  <%= link_to "製造状況ページへ", root_path %>
+    <div class = manufacturing_link></div>
+  <h2>新規材料登録</h2>
+  <%= form_with(model: @small_box, local: true, method: :post, class: "material-form") do |form| %>
+    <%= form.text_field :name, placeholder: "材料名を入力して下さい", class: "material-input" %>
+    <%= form.submit "追加する"%>
+  <% end %>
+
+  <table>
+    <thead>
+      <tr>
+        <th>NO</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th>材料名</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @small_boxes.each do |small_box| %>
+        <tr>
+          <td class="material__show"><%= small_box.id%></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="material__show"><%= small_box.name%></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

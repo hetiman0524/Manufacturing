@@ -2,21 +2,27 @@
   <div class="container">
     <%= form_with(model: @manufacturingstatus, local: true) do |form| %>
       <h3>
-        銘柄新規登録
+        新規製造計画銘柄登録
       </h3>
-      
       <%= form.label :name, "銘柄名" %>
-      <%= form.collection_select :brand_id, Brand.all, :id, :name,　placeholder: "銘柄名" %>
+      <%= form.collection_select :brand_id, Brand.all, :id, :name, placeholder: "銘柄名" %>
       <%= form.label :name, "製造予定数量" %>
       <%= form.number_field :production_plan, placeholder: "製造予定数量" %>
       <%= form.label :name, "現製造数" %>
       <%= form.number_field :production_remaining, value: 0, placeholder: "製造数" %>
-      <%= form.label :name, "材料数量" %>
+      <%= form.label :name, "初期材料数量" %>
+      <%= form.label :name, "刻み" %>
       <%= form.number_field :cigarette_shred_number, value: 0, placeholder: "刻み" %>
+      <%= form.label :name, "小箱" %>
       <%= form.number_field :small_box_number, value: 0, placeholder: "小箱" %>
+      <%= form.label :name, "巻紙" %>
       <%= form.number_field :paper_roll_number, value: 0, placeholder: "巻紙" %>
+      <%= form.label :name, "フィルター" %>
       <%= form.number_field :filter_number, value: 0, placeholder: "フィルター" %>
-      <%= form.submit "SEND" %>
+      <%= form.submit "登録する" %>
     <% end %>
   </div>
+  <p>＊現製造数と初期材料数量は前回までの製造実績がない限りは０</p>
+  <%= link_to "戻る", root_path %>
+      <div class="production__path"></div>
 </div>
