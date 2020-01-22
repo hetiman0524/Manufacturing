@@ -8,7 +8,7 @@ class Brand < ApplicationRecord
   def self.search(search)
     if search
       #Brand.where('name LIKE(?)', "#{search}%")
-      Brand.where(['name LIKE ? OR cigarette_shred_id LIKE ? OR paper_roll_id LIKE ? OR small_box_id LIKE ? OR filter_id  LIKE ?', "#{search}%", "#{search}%", "#{search}%", "#{search}%", "#{search}%"])
+      Brand.where(['cast(name as text) LIKE ? OR cigarette_shred_id LIKE ? OR paper_roll_id LIKE ? OR small_box_id LIKE ? OR filter_id  LIKE ?', "#{search}%", "#{search}%", "#{search}%", "#{search}%", "#{search}%"])
     else
       Brand.all
     end

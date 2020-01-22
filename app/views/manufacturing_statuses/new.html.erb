@@ -7,7 +7,7 @@
       <%= form.label :name, "銘柄名" %>
       <%= form.collection_select :brand_id, Brand.all, :id, :name, placeholder: "銘柄名" %>
       <%= form.label :name, "製造予定数量" %>
-      <%= form.number_field :production_plan, placeholder: "製造予定数量" %>
+      <%= form.number_field :production_plan, placeholder: "製造予定数量" %>c/s
       <%= form.label :name, "現製造数" %>
       <%= form.number_field :production_remaining, value: 0, placeholder: "製造数" %>
       <%= form.label :name, "初期材料数量" %>
