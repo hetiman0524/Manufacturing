@@ -1,0 +1,2 @@
+module SmallBoxsHelper
+end
